@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -236,6 +237,7 @@ public Random random = new Random();
 	
 	public void printResult(List<List<Integer>> lifi){
 		for (int i = 0; i < lifi.size(); i++) {
+			Collections.sort(lifi.get(i));
 			for (int j = 0; j < 6; j++) {
 				if(lifi.get(i) != null && !lifi.get(i).isEmpty()){
 					System.out.print(lifi.get(i).get(j) + ",");
@@ -244,6 +246,19 @@ public Random random = new Random();
 			System.out.println();
 		}
 		System.out.println("gerados: "+lifi.size());
+	}
+	
+	public void printResultMediaDesvp(List<List<Double>> lifi, boolean showNumConcurso){
+		for (int i = 0; i < lifi.size(); i++) {
+			if(lifi.get(i) != null && !lifi.get(i).isEmpty()){
+				String conc = "";
+				if(showNumConcurso){
+					conc = String.valueOf(i+1);
+				}
+				System.out.print(conc+" "+lifi.get(i).get(0) + " "+lifi.get(i).get(1));
+			}
+			System.out.println();
+		}
 	}
 	
 	public List<List<Double>> mapaMediaDesvPadrao(List<List<Integer>> jogs){

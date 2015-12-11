@@ -26,6 +26,10 @@ public class Runtest {
 		//tuto.add(Arrays.asList(16,26,35,39,44,45));
 		//tuto.add(Arrays.asList(5,7,11,34,35,50));
 		
+		//print media e desvp
+		List<List<Double>> mediaDesv = new ArrayList<List<Double>>();
+	    mediaDesv = surpresa.mapaMediaDesvPadrao(tuto);
+		surpresa.printResultMediaDesvp(mediaDesv, true);
 		
 		//Historico de ocorrencias por freq de aparicao
 		//surpresa.printHistoricoOcorrencias(surpresa.getHistoricoOcorrencias(tuto, 1000),1000, true);
@@ -34,13 +38,13 @@ public class Runtest {
 		//surpresa.analiseSequenciais(pot, 3);
 		
 		//ocorrencias
-		Map<Integer, Integer> mapaOcorrencias = surpresa.analiseOrdemAparicoes(tuto, true);
-		surpresa.printValoresQuantidadesOcorrencias(mapaOcorrencias);
+		//Map<Integer, Integer> mapaOcorrencias = surpresa.analiseOrdemAparicoes(tuto, true);
+		//surpresa.printValoresQuantidadesOcorrencias(mapaOcorrencias);
 		
 		
-		int[] ocorrencias = {2,3,1,0};// 4 posicoes , de mais ocorridos a menos com quantidade p cada
-		pot = surpresa.littleSurprise(31.5, 21, 50, mapaOcorrencias, ocorrencias, false);
-		surpresa.testarGerados(tuto, pot);
+		//int[] ocorrencias = {0,3,2,1};// 4 posicoes , de mais ocorridos a menos com quantidade p cada
+		//pot = surpresa.littleSurprise(31.5, 21, 50, mapaOcorrencias, ocorrencias, false);
+		//surpresa.testarGerados(tuto, pot);
 		System.out.println("Program ended!");
 	}
 	//fimain

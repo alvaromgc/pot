@@ -1,5 +1,6 @@
 package br.com.ac.graph;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,8 @@ public class FrequenciaMaiorOcorrenciaGraph extends ApplicationFrame
          true,true,false);
       
       final CategoryPlot plot = (CategoryPlot) lineChart.getPlot();
-      
+      plot.getRenderer().setSeriesStroke(0, new BasicStroke(3f));
+      plot.getRenderer().setSeriesStroke(1, new BasicStroke(3f));
       
       //settings
       final CategoryAxis categoryAxis = (CategoryAxis) plot.getDomainAxis();
@@ -49,8 +51,9 @@ public class FrequenciaMaiorOcorrenciaGraph extends ApplicationFrame
       rangeAxis.setTickUnit(new NumberTickUnit(1));
       
       
+      
       ChartPanel chartPanel = new ChartPanel( lineChart );
-      chartPanel.setPreferredSize( new java.awt.Dimension( 1500 , 600 ) );
+      chartPanel.setPreferredSize( new java.awt.Dimension( 2500 , 700 ) );
       setContentPane( chartPanel );
    }
 
@@ -91,9 +94,9 @@ public class FrequenciaMaiorOcorrenciaGraph extends ApplicationFrame
 	   
       FrequenciaMaiorOcorrenciaGraph chart = new FrequenciaMaiorOcorrenciaGraph(
       "Ocorrencias" ,
-      "Ocorrência por jogo",
-      1700,
-      true);
+      "Ocorrência",
+      1500,
+      false);
 
       chart.pack( );
       RefineryUtilities.centerFrameOnScreen( chart );
