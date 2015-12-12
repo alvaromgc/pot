@@ -495,7 +495,7 @@ public Random random = new Random();
 		Integer umQuarto = (Integer)((meio + menorValor)/2);
 		Integer tresQuarto = (Integer)((maiorValor + meio)/2);
 		
-		System.out.println("Classes de ordem são: Maior:"+maiorValor+" Meio maior: "+tresQuarto+" Meio : "+meio+" Meio menor: "+umQuarto+" Menor: "+menorValor);
+		System.out.println("Classes de ordem sao: Maior:"+maiorValor+" Meio maior: "+tresQuarto+" Meio : "+meio+" Meio menor: "+umQuarto+" Menor: "+menorValor);
 	}
 	
 }
