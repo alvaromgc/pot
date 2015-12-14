@@ -25,6 +25,7 @@ public class Runtest {
 		//tuto.add(Arrays.asList(22,23,41,46,53,60));
 		//tuto.add(Arrays.asList(16,26,35,39,44,45));
 		//tuto.add(Arrays.asList(5,7,11,34,35,50));
+		//32 37 44 47 54 60
 		
 		//print media e desvp
 		//List<List<Double>> mediaDesv = new ArrayList<List<Double>>();
@@ -42,8 +43,8 @@ public class Runtest {
 		surpresa.printValoresQuantidadesOcorrencias(mapaOcorrencias);
 		
 		
-		int[] ocorrencias = {0,3,2,1};// 4 posicoes , de mais ocorridos a menos com quantidade p cada
-		pot = surpresa.littleSurprise(31.5, 15, 50, mapaOcorrencias, ocorrencias, false);
+		int[] ocorrencias = {0,2,3,1};// 4 posicoes , de mais ocorridos a menos com quantidade p cada
+		pot = surpresa.littleSurprise(32.5, 16.5, 50, mapaOcorrencias, ocorrencias, false);
 		surpresa.testarGerados(tuto, pot);
 		System.out.println("Program ended!");
 	}

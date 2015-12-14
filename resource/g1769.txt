@@ -1,5 +1,12 @@
 31.5, 21
-{0,3,2,1}
+{0,3,2,1}  
+
+real 45 10   {1,4,1,0}
+
+http://angular-dashboard-seed.flatlogic.com/#/app/dashboard
+https://github.com/StephanSchrader/undertow-jaxrs-cdi
+https://github.com/gabfssilva/microservices-sample-undertow-cdi-jaxrs
+https://github.com/javaee-samples/javaee7-samples/tree/master/jaxrs
 
 2,16,46,48,22,54,*
 57,30,49,6,9,37,
