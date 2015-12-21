@@ -2,11 +2,12 @@
 {0,3,2,1}  
 
 real 45 10   {1,4,1,0}
-
+google-chrome --args --disable-web-security
 http://angular-dashboard-seed.flatlogic.com/#/app/dashboard
 https://github.com/StephanSchrader/undertow-jaxrs-cdi
 https://github.com/gabfssilva/microservices-sample-undertow-cdi-jaxrs
 https://github.com/javaee-samples/javaee7-samples/tree/master/jaxrs
+https://github.com/angular/angular-seed.git”.
 
 2,16,46,48,22,54,*
 57,30,49,6,9,37,

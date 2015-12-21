@@ -70,9 +70,10 @@ public class FrequenciaMaiorOcorrenciaGraph extends ApplicationFrame
 
       List<int[]> ocorrencias = new ArrayList<int[]>();
       int apartircc = numConcInicio;
-      ocorrencias = surpresa.getHistoricoOcorrencias(tuto, apartircc);
+      ocorrencias = surpresa.getHistoricoOcorrencias(tuto);
+      ocorrencias = ocorrencias.subList(apartircc - 1, ocorrencias.size());
       
-      int i = 0;
+      int i = 1;
       for (int[] ocr : ocorrencias) {
 		 if(maiorEmedioMaior){
 			 dataset.addValue( ocr[0] , "Ocorrencia Maior" , String.valueOf(i+apartircc) );
@@ -96,7 +97,7 @@ public class FrequenciaMaiorOcorrenciaGraph extends ApplicationFrame
       "Ocorrencias" ,
       "Ocorrência",
       1500,
-      false);
+      true);
 
       chart.pack( );
       RefineryUtilities.centerFrameOnScreen( chart );

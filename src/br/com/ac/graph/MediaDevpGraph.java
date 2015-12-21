@@ -64,7 +64,7 @@ public class MediaDevpGraph extends ApplicationFrame
       MediaDevpGraph chart = new MediaDevpGraph(
       "Media" ,
       "Numer of Schools vs years",
-      1200);
+      1450);
 
       chart.pack( );
       RefineryUtilities.centerFrameOnScreen( chart );

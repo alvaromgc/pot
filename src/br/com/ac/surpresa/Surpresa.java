@@ -390,12 +390,15 @@ public Random random = new Random();
 	 * Busca o historico das ordens de aparicao a partir do kesimo concurso
 	 * @param resultados
 	 */
-	public List<int[]> getHistoricoOcorrencias(List<List<Integer>> resultados, int k){
+	public List<int[]> getHistoricoOcorrencias(List<List<Integer>> resultados){
 		List<int[]> listaTiposOcorrencia = new ArrayList<int[]>();
-		for(int i = k; i < resultados.size(); i++){
+		for(int i = 1; i < resultados.size(); i++){
 			List<List<Integer>> parcial = resultados.subList(0, i -1);
-			Map<Integer, Integer> mapaParcial = analiseOrdemAparicoes(parcial, false);
-			int[] a = quantidadeMaioMenorOcorrencia(mapaParcial, resultados.get(i));
+			int[] a = {0,0,0,0};
+			if(i > 100){
+				Map<Integer, Integer> mapaParcial = analiseOrdemAparicoes(parcial, false);
+				a = quantidadeMaioMenorOcorrencia(mapaParcial, resultados.get(i));
+			}
 			listaTiposOcorrencia.add(a);
 		}
 		return listaTiposOcorrencia;
@@ -408,11 +411,11 @@ public Random random = new Random();
 	 */
 	public void printHistoricoOcorrencias(List<int[]> resultados, int concInicial, boolean printNumConc){
 		
-		for(int i = 0; i < resultados.size(); i++){
+		for(int i = concInicial - 1; i < resultados.size(); i++){
 			//System.out.println(i+" :: "+a[0]+" - "+a[1]+" - "+a[2]+" - "+a[3]);
 			String numConc = "";
 			if(printNumConc){
-				numConc = String.valueOf(concInicial+i+1);
+				numConc = String.valueOf(i+1);
 				numConc = "Concurso n "+numConc+" ";
 			}
 			System.out.println(numConc+resultados.get(i)[0]+" - "+resultados.get(i)[1]+" - "+resultados.get(i)[2]+" - "+resultados.get(i)[3]);
