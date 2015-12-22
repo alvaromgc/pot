@@ -166,7 +166,7 @@ public Random random = new Random();
 	 * @param printLog *opt imprime med e desvp das tentativas
 	 * @return
 	 */
-	public List<List<Integer>> littleSurprise(double med, double dep, int qnt, Map<Integer, Integer> map, int[] occurs, boolean printLog) {
+	public List<List<Integer>> littleSurprise(double med, double dep, int qnt, Map<Integer, Integer> map, int[] occurs, boolean printLog, boolean quantidadePorMediana) {
 		
 		List<List<Integer>> lifi = new ArrayList<List<Integer>>();
 		
@@ -206,7 +206,7 @@ public Random random = new Random();
 						return null;
 					}
 					
-					if(( med == 0 && dep == 0 || (medVale && depVale)) && !containsSeq(lifi, seq) && (occurs == null || analiseQuantidadeMaiorMenorOcorrencia(map, seq,occurs) )){
+					if(( med == 0 && dep == 0 || (medVale && depVale)) && !containsSeq(lifi, seq) && (occurs == null || analiseQuantidadeMaiorMenorOcorrencia(map, seq,occurs, quantidadePorMediana) )){
 						lifi.get(i).addAll(seq);
 						if(printLog){
 							System.out.print("med: "+calcmed);
@@ -387,17 +387,18 @@ public Random random = new Random();
 	}
 	
 	/**
-	 * Busca o historico das ordens de aparicao a partir do kesimo concurso
+	 * Busca o historico das ordens de aparicao 
 	 * @param resultados
+	 * @param classesPorMediana calcular classes por mediana o media
 	 */
-	public List<int[]> getHistoricoOcorrencias(List<List<Integer>> resultados){
+	public List<int[]> getHistoricoOcorrencias(List<List<Integer>> resultados, boolean classesPorMediana){
 		List<int[]> listaTiposOcorrencia = new ArrayList<int[]>();
 		for(int i = 1; i < resultados.size(); i++){
 			List<List<Integer>> parcial = resultados.subList(0, i -1);
 			int[] a = {0,0,0,0};
 			if(i > 100){
 				Map<Integer, Integer> mapaParcial = analiseOrdemAparicoes(parcial, false);
-				a = quantidadeMaioMenorOcorrencia(mapaParcial, resultados.get(i));
+				a = quantidadeMaioMenorOcorrencia(mapaParcial, resultados.get(i), classesPorMediana);
 			}
 			listaTiposOcorrencia.add(a);
 		}
@@ -423,7 +424,15 @@ public Random random = new Random();
 		
 	}
 	
-	public Boolean analiseQuantidadeMaiorMenorOcorrencia(Map<Integer, Integer> mapa, List<Integer> jog, int[] tipos){
+	/**
+	 * 
+	 * @param mapa mapa calculado de quantidade de ocorrencia por numeros
+	 * @param jog lista de jogos
+	 * @param tipos tipos de ocorrencia por classe desejados {0,0,0,0}
+	 * @param mediana calcular classes pela mediana das aparicoes ou pela media
+	 * @return
+	 */
+	public Boolean analiseQuantidadeMaiorMenorOcorrencia(Map<Integer, Integer> mapa, List<Integer> jog, int[] tipos, boolean mediana){
 		
 		if(tipos.length != 4){
 			System.out.println("Array de quantitativos deve ter 4 posicoes(Mais, medioMax, MedioMin, menos occorridos ).");
@@ -434,25 +443,53 @@ public Random random = new Random();
 			return null;
 		}
 		
-		int[] relOcorr = quantidadeMaioMenorOcorrencia(mapa, jog);
+		int[] relOcorr = quantidadeMaioMenorOcorrencia(mapa, jog, mediana);
 		
 		return relOcorr[0] == tipos[0] && relOcorr[1] == tipos[1] && relOcorr[2] == tipos[2] && relOcorr[3] == tipos[3];
 		
 	}
 	
+	/**
+	 * 
+	 * @param mapa mapa de quantidades
+	 * @param jog array de jogos
+	 * @param mediana calculo de classes de aparicao por mediana ou por media
+	 * @return
+	 */
 	public int[] quantidadeMaioMenorOcorrencia(Map<Integer, Integer> mapa,
-			List<Integer> jog) {
+			List<Integer> jog, boolean mediana) {
 		
 		Iterator<Integer> ite = mapa.keySet().iterator(); 
 		Integer menorValor = mapa.get((Integer)ite.next());
 		Integer maiorValor = 0;
-		while (ite.hasNext()) {
-			maiorValor = mapa.get((Integer) ite.next());
-		}
+		Integer meio = 0;
+		Integer umQuarto = 0;
+		Integer tresQuarto = 0;
 		
-		Integer meio = (Integer)((maiorValor + menorValor)/2);
-		Integer umQuarto = (Integer)((meio + menorValor)/2);
-		Integer tresQuarto = (Integer)((maiorValor + meio)/2);
+		if(mediana){
+			while (ite.hasNext()) {
+				maiorValor = mapa.get((Integer) ite.next());
+			}
+			
+			meio = (Integer)((maiorValor + menorValor)/2);
+			umQuarto = (Integer)((meio + menorValor)/2);
+			tresQuarto = (Integer)((maiorValor + meio)/2);
+		}else{
+			int posicao = 1;
+			while (ite.hasNext()) {
+				posicao++;
+				if(posicao == 14){
+					umQuarto = mapa.get((Integer) ite.next());
+				}
+				if(posicao == 29){
+					meio = mapa.get((Integer) ite.next());
+				}
+				if(posicao == 44){
+					tresQuarto = mapa.get((Integer) ite.next());
+				}
+				maiorValor = mapa.get((Integer) ite.next());
+			}
+		}
 		
 		int[] relOcorr = {0,0,0,0};
 		for (Integer num : jog) {

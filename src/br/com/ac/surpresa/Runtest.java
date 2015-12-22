@@ -28,19 +28,19 @@ public class Runtest {
 		//32 37 44 47 54 60
 		
 		//print media e desvp
-		List<List<Double>> mediaDesv = new ArrayList<List<Double>>();
-	    mediaDesv = surpresa.mapaMediaDesvPadrao(tuto);
-		surpresa.printResultMediaDesvp(mediaDesv, true);
+		//List<List<Double>> mediaDesv = new ArrayList<List<Double>>();
+	    //mediaDesv = surpresa.mapaMediaDesvPadrao(tuto);
+		//surpresa.printResultMediaDesvp(mediaDesv, true);
 		
 		//Historico de ocorrencias por freq de aparicao
-		//surpresa.printHistoricoOcorrencias(surpresa.getHistoricoOcorrencias(tuto),1000, true);
+		surpresa.printHistoricoOcorrencias(surpresa.getHistoricoOcorrencias(tuto, false),1000, false);
 		
 		//analise de numero de sequencias
 		//surpresa.analiseSequenciais(pot, 3);
 		
 		//ocorrencias
-		//Map<Integer, Integer> mapaOcorrencias = surpresa.analiseOrdemAparicoes(tuto, true);
-		//surpresa.printValoresQuantidadesOcorrencias(mapaOcorrencias);
+		Map<Integer, Integer> mapaOcorrencias = surpresa.analiseOrdemAparicoes(tuto, true);
+		surpresa.printValoresQuantidadesOcorrencias(mapaOcorrencias);
 		
 		
 		//int[] ocorrencias = {0,2,3,1};// 4 posicoes , de mais ocorridos a menos com quantidade p cada

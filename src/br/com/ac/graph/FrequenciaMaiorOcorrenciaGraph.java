@@ -70,7 +70,7 @@ public class FrequenciaMaiorOcorrenciaGraph extends ApplicationFrame
 
       List<int[]> ocorrencias = new ArrayList<int[]>();
       int apartircc = numConcInicio;
-      ocorrencias = surpresa.getHistoricoOcorrencias(tuto);
+      ocorrencias = surpresa.getHistoricoOcorrencias(tuto, false);
       ocorrencias = ocorrencias.subList(apartircc - 1, ocorrencias.size());
       
       int i = 1;
