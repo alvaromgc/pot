@@ -523,18 +523,37 @@ public Random random = new Random();
 		}
 	}
 	
-	public void printValoresQuantidadesOcorrencias(Map<Integer, Integer> mapa){
+	public void printValoresQuantidadesOcorrencias(Map<Integer, Integer> mapa, boolean mediana){
 		Iterator<Integer> ite = mapa.keySet().iterator(); 
 		Integer menorValor = mapa.get((Integer)ite.next());
 		Integer maiorValor = 0;
-		while (ite.hasNext()) {
-			maiorValor = mapa.get((Integer) ite.next());
+		Integer meio = 0;
+		Integer umQuarto = 0;
+		Integer tresQuarto = 0;
+		if(mediana){
+			while (ite.hasNext()) {
+				maiorValor = mapa.get((Integer) ite.next());
+			}
+			
+			meio = (Integer)((maiorValor + menorValor)/2);
+			umQuarto = (Integer)((meio + menorValor)/2);
+			tresQuarto = (Integer)((maiorValor + meio)/2);
+		}else{
+			int posicao = 1;
+			while (ite.hasNext()) {
+				posicao++;
+				if(posicao == 14){
+					umQuarto = mapa.get((Integer) ite.next());
+				}
+				if(posicao == 29){
+					meio = mapa.get((Integer) ite.next());
+				}
+				if(posicao == 44){
+					tresQuarto = mapa.get((Integer) ite.next());
+				}
+				maiorValor = mapa.get((Integer) ite.next());
+			}
 		}
-		
-		Integer meio = (Integer)((maiorValor + menorValor)/2);
-		Integer umQuarto = (Integer)((meio + menorValor)/2);
-		Integer tresQuarto = (Integer)((maiorValor + meio)/2);
-		
 		System.out.println("Classes de ordem sao: Maior:"+maiorValor+" Meio maior: "+tresQuarto+" Meio : "+meio+" Meio menor: "+umQuarto+" Menor: "+menorValor);
 	}
 	

@@ -22,9 +22,9 @@ public class Runtest {
 		tuto = surpresa.geraFromResource();
 		
 		//faltando no html
-		//tuto.add(Arrays.asList(22,23,41,46,53,60));
-		//tuto.add(Arrays.asList(16,26,35,39,44,45));
-		//tuto.add(Arrays.asList(5,7,11,34,35,50));
+		//tuto.add(Arrays.asList(1,3,10,17,20,23));
+		//tuto.add(Arrays.asList(2,9,13,15,18,26));
+		//tuto.add(Arrays.asList(33,38,43,47,52,55));
 		//32 37 44 47 54 60
 		
 		//print media e desvp
@@ -40,7 +40,7 @@ public class Runtest {
 		
 		//ocorrencias
 		Map<Integer, Integer> mapaOcorrencias = surpresa.analiseOrdemAparicoes(tuto, true);
-		surpresa.printValoresQuantidadesOcorrencias(mapaOcorrencias);
+		surpresa.printValoresQuantidadesOcorrencias(mapaOcorrencias, false);
 		
 		
 		//int[] ocorrencias = {0,2,3,1};// 4 posicoes , de mais ocorridos a menos com quantidade p cada

@@ -42,7 +42,7 @@ public class GeraNumeros {
 		tuto = surpresa.geraFromResource();
 		
 		Map<Integer, Integer> mapaOcorrencias = surpresa.analiseOrdemAparicoes(tuto, true);
-		surpresa.printValoresQuantidadesOcorrencias(mapaOcorrencias);
+		surpresa.printValoresQuantidadesOcorrencias(mapaOcorrencias, true);
 		
 		int mr = 0;
 		int mmr = 0;
@@ -65,11 +65,11 @@ public class GeraNumeros {
 		int[] ocorrencias = {mr,mmr,mnr,mn};// 4 posicoes , de mais ocorridos a menos com quantidade p cada
 		int quantidade  = Integer.valueOf(args[0]).intValue();
 		if(semMedia){
-			pot = surpresa.littleSurprise(0, 0, quantidade, mapaOcorrencias, ocorrencias, false);
+			pot = surpresa.littleSurprise(0, 0, quantidade, mapaOcorrencias, ocorrencias, false, true);
 		}else{
 			double media = Double.valueOf(args[1]).doubleValue();
 			double desvio = Double.valueOf(args[2]).doubleValue();
-			pot = surpresa.littleSurprise(media, desvio, quantidade, mapaOcorrencias, ocorrencias, false);
+			pot = surpresa.littleSurprise(media, desvio, quantidade, mapaOcorrencias, ocorrencias, false, true);
 		}
 		surpresa.testarGerados(tuto, pot);
 		System.out.println("Program ended!");

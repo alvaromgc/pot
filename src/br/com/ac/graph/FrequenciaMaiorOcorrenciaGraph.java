@@ -3,6 +3,7 @@ package br.com.ac.graph;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.jfree.chart.ChartFactory;
@@ -67,10 +68,14 @@ public class FrequenciaMaiorOcorrenciaGraph extends ApplicationFrame
       Surpresa surpresa = new Surpresa();
       List<List<Integer>> tuto = new ArrayList<List<Integer>>();
       tuto = surpresa.geraFromResource();
-
+      //test
+      tuto.add(Arrays.asList(1,3,10,17,20,23));
+      tuto.add(Arrays.asList(2,9,13,15,18,26));
+      tuto.add(Arrays.asList(33,38,43,47,52,55));
+      
       List<int[]> ocorrencias = new ArrayList<int[]>();
       int apartircc = numConcInicio;
-      ocorrencias = surpresa.getHistoricoOcorrencias(tuto, false);
+      ocorrencias = surpresa.getHistoricoOcorrencias(tuto, true);
       ocorrencias = ocorrencias.subList(apartircc - 1, ocorrencias.size());
       
       int i = 1;
@@ -97,7 +102,7 @@ public class FrequenciaMaiorOcorrenciaGraph extends ApplicationFrame
       "Ocorrencias" ,
       "Ocorrência",
       1500,
-      true);
+      false);
 
       chart.pack( );
       RefineryUtilities.centerFrameOnScreen( chart );
